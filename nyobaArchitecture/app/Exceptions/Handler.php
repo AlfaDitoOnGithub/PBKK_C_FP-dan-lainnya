@@ -27,4 +27,10 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+        public function report(Throwable $exception)
+    {
+        MessageBus::resetMessages(); // add this line
+        parent::report($exception);
+    }
 }
