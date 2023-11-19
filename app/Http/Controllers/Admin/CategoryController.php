@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryStoreRequest;
+use App\Http\Requests\CategoryUpdateRequest;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -22,15 +25,23 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CategoryStoreRequest $request)
     {
-        //
+        $image = $request->file('image')->store('public/categories');
+
+        Category::create([
+            'name' => $request->name,
+            'image' => $image,
+            'description' => $request->description
+        ]);
+
+        return to_route('admin.categories.index')->with('success', 'Category created successfully.');
     }
 
     /**
@@ -44,24 +55,54 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Category $category)
     {
-        //
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        if($request->name !== $category->name){
+            $request->validate([
+                'name' => ['required', 'unique:categories'],
+                'description' => ['required'],
+                'image' => ['required','image']
+            ]);
+        } else {
+            if($request->name !== $category->name){
+                $request->validate([
+                    'description' => ['required'],
+                    'image' => ['required','image']
+                ]);
+            } 
+        }
+        
+        $image = $category->image;
+        if($request->hasFile('image')){
+            Storage::delete($category->image);
+            $image = $request->file('image')->store('public/categories');
+        }
+
+        $category->update([
+            'name' => $request->name,
+            'image' => $image,
+            'description' => $request->description 
+        ]);
+
+        return to_route('admin.categories.index')->with('success', 'Category updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Category $category)
     {
-        //
+        Storage::delete($category->image);
+        $category->delete();
+
+        return to_route('admin.categories.index')->with('success', 'Category deleted successfully.');
     }
 }
