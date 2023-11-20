@@ -25,7 +25,7 @@
                                 Price
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Description
+                                Categories
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Action
@@ -45,7 +45,9 @@
                                     {{ $menu->price }}
                                 </td>
                                 <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $menu->description }}
+                                    @foreach($menu->categories as $category)
+                                        <p>{{ $category->name }}</p>
+                                    @endforeach
                                 </td>
                                 <td class="row">
                                     <a href="{{ route('admin.menus.edit', $menu->id) }}" class="px-4 py-3 bg-green-500 hover:bg-green-700 rounded-lg text-white mx-2 inline"> Edit </a>

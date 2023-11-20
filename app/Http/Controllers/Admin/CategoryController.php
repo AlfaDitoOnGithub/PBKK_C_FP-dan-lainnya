@@ -6,7 +6,6 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryStoreRequest;
-use App\Http\Requests\CategoryUpdateRequest;
 use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
@@ -72,12 +71,10 @@ class CategoryController extends Controller
                 'image' => ['required','image']
             ]);
         } else {
-            if($request->name !== $category->name){
-                $request->validate([
-                    'description' => ['required'],
-                    'image' => ['required','image']
-                ]);
-            } 
+            $request->validate([
+                'description' => ['required'],
+                'image' => ['required','image']
+            ]); 
         }
         
         $image = $category->image;
