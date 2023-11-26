@@ -42,7 +42,7 @@
                         <div class="sm:col-span-6">
                             <label for="price" class="block text-sm font-medium text-gray-700"> Price </label>
                             <div class="mt-1">
-                                <input type="number" id="price" name="price" min="0.00" max="100000000.00" value="{{ $menu->price }}"
+                                <input type="number" id="price" name="price" min="0.00" max="100000000.00" value="{{ $menu->price }}" step="0.01"
                                     class="block w-full appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('name') border-red-400 @enderror" />
                             </div>
                             @error('price')
