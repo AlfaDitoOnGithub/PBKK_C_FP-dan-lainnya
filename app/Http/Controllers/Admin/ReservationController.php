@@ -63,9 +63,10 @@ class ReservationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Reservation $reservation)
     {
-        //
+        $tables = Table::where('status', TableStatus::Available)->get();
+        return view('admin.reservations.edit', compact('reservation'));
     }
 
     /**
