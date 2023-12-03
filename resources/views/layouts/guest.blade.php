@@ -39,25 +39,34 @@
         <div :class="isOpen ? 'flex' : 'hidden'"
           class="flex-col mt-8 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0">
           <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
-            href="#">Home</a>
-          <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
-            href="#">About Us</a>
+          href="{{ route('landing') }}">Home</a>
           <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
             href="#">Our Menu</a>
           <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
             href="#">Make Reservations</a>
-          
+          @if (!Auth::user())
+            <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
+              href="{{ route('login') }}">Login</a>
+            <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
+              href="{{ route('register') }}">Register</a>
+          @else
+            @if (Auth::user()->is_admin)
+              <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
+              href="{{ route('admin.index') }}">Admin View</a>
+            @endif
+            <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
+            href="{{ route('profile.edit') }}">{{ Auth::user()->name }}</a>
+            <form method="POST" action="{{ route('logout') }}">
+              @csrf
+              <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
+              href="{{ route('logout') }}"  onclick="event.preventDefault();this.closest('form').submit();">Logout</a>
+            </form>
+          @endif
         </div>
       </nav>
     </div>
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
-            <div>
-                <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
-            </div>
-
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
+            <div class="w-full">
                 {{ $slot }}
             </div>
         </div>
