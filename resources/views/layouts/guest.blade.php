@@ -41,9 +41,11 @@
           <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
           href="{{ route('landing') }}">Home</a>
           <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
-            href="#">Our Menu</a>
+            href="{{ route('categories.index') }}">Categories</a>
           <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
-            href="#">Make Reservations</a>
+            href="{{ route('menus.index') }}">Our Menu</a>
+          <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
+            href="{{ route('reservations.step.one') }}">Make Reservations</a>
           @if (!Auth::user())
           <button class="text-white bg-green-400 hover:bg-green-500 px-2 py-1 rounded-md">
             <a href="{{ route('login') }}" style="text-decoration: none; color: inherit;">Login</a>
