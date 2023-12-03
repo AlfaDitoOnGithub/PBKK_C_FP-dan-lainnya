@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="flex justify-end m-2 p-2">
                 <a href="{{ route('admin.reservations.index') }}"
-                    class="px-4 py-2 bg-blue-500 hover:bg-blue-700 rounded-lg text-white">Back to Index</a>
+                    class="px-4 py-2 bg-blue-500 hover:bg-blue-700 rounded-lg text-white">Back to Reservation Index</a>
             </div>
             <div class="m-2 p-2 bg-slate-100 rounded">
                 <div class="space-y-8 divide-y divide-gray-200 mt-10">

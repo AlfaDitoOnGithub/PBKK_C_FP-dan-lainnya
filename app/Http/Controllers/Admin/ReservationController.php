@@ -72,16 +72,34 @@ class ReservationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ReservationStoreRequest $request, Reservation $reservation)
     {
-        //
+        $table = Table::findOrFail($request->table_id);
+
+        if($request->guest_number > $table->capacity){
+            return back()->with('warning', 'Too many guest for current table');
+        }
+
+        $request_date = Carbon::parse($request->res_date);
+        $reservation = $table->reservations()->where('id', '!=', $reservation->id)->get();
+        foreach ($table->reservation as $res) {
+            if ($res->res_date->format('Y-m-d H') == $request_date->format('Y-m-d H')) {
+                return back()->with('warning', 'This table is reserved for this time');
+            }
+        }
+
+        $reservation->update($request->validated());
+        return to_route('admin.reservations.index')->with('success', 'Reservation updated successfully');
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Reservation $reservation)
     {
-        //
+        $reservation->delete();
+
+        return to_route('admin.reservations.index')->with('success', 'Reservation has been deleted succesfully');
     }
 }
