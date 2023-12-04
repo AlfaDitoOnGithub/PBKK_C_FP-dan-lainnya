@@ -4,7 +4,8 @@
             <div class="flex-1 h-full max-w-4xl mx-auto bg-white rounded-lg shadow-xl">
               <div class="flex flex-col md:flex-row">
                 <div class="h-32 md:h-auto md:w-1/2">
-                    <img class="object-cover w-full h-full" src="{{ Storage::url('public/assets/ditobarlogo.png') }}" alt="Logo">
+                    <img class="object-cover w-full h-full" src="..\resources\assets
+                    resources\assets\Logo.jpg" alt="Logo">
                 </div>
         
                 <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
@@ -19,7 +20,6 @@
                     <form method="POST" action="{{ route('reservations.store.step.one') }}">
                         @csrf
                         <div class="sm:col-span-6">
-                            <input type="hidden" id="user_id" name="user_id" value="{{ Auth::user()->id }}">
                             <label for="first_name" class="block text-sm font-medium text-gray-700"> First Name </label>
                             <div class="mt-1">
                                 <input type="text" id="first_name" name="first_name" value="{{ $reservation->first_name ?? '' }}"
@@ -53,7 +53,7 @@
                             <label for="res_date" class="block text-sm font-medium text-gray-700"> Res. Date </label>
                             <div class="mt-1">
                                 <input type="datetime-local" id="res_date" name="res_date" 
-                                min=" {{ $min_date->format('Y-m-d\TH:i:s') }} " 
+                                min="{{ $min_date->format('Y-m-d\TH:i:s') }} " 
                                 max="{{ $max_date->format('Y-m-d\TH:i:s') }} " 
                                 value="{{ $reservation ? $reservation->res_date->format('Y-m-d\TH:i:s') : '' }}"
                                     class="block w-full appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
