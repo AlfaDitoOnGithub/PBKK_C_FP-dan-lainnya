@@ -106,7 +106,7 @@
         <div class="max-w-md p-4 bg-white rounded-lg shadow-lg">
           <div class="flex justify-center -mt-16 md:justify-end">
             <img class="object-cover w-20 h-20 border-2 border-green-500 rounded-full"
-              src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80">
+              src="https://cdn.pixabay.com/photo/2017/08/03/21/48/drinks-2578446_1280.jpg">
           </div>
           <div>
             <h2 class="text-3xl font-semibold text-gray-800">Culinary Excellence</h2>
@@ -116,7 +116,7 @@
         <div class="max-w-md p-4 bg-white rounded-lg shadow-lg">
           <div class="flex justify-center -mt-16 md:justify-end">
             <img class="object-cover w-20 h-20 border-2 border-green-500 rounded-full"
-              src="https://cdn.pixabay.com/photo/2018/01/04/21/15/young-3061652__340.jpg">
+              src="https://cdn.pixabay.com/photo/2021/11/04/04/03/waitress-6767345_1280.jpg">
           </div>
           <div>
             <h2 class="text-3xl font-semibold text-gray-800">Warm Hospitality</h2>
