@@ -47,10 +47,10 @@
           <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
             href="{{ route('reservations.step.one') }}">Make Reservations</a>
           @if (!Auth::user())
-          <button class="text-white bg-green-400 hover:bg-green-500 px-2 py-1 rounded-md">
+          <button class="text-white bg-green-400 hover:bg-green-500 px-4 py-2 rounded-md">
             <a href="{{ route('login') }}" style="text-decoration: none; color: inherit;">Login</a>
           </button>
-          <button class="text-white bg-blue-400 hover:bg-blue-500 px-2 py-1 rounded-md">
+          <button class="text-white bg-blue-400 hover:bg-blue-500 px-4 py-2 rounded-md">
           <a href="{{ route('register') }}" style="text-decoration: none; color: inherit;">Register</a>
           </button>
 
@@ -59,13 +59,17 @@
               <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
               href="{{ route('admin.index') }}">Admin View</a>
             @endif
-            <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
-            href="{{ route('profile.edit') }}">{{ Auth::user()->name }}</a>
-            <form method="POST" action="{{ route('logout') }}">
-              @csrf
-              <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
-              href="{{ route('logout') }}"  onclick="event.preventDefault();this.closest('form').submit();">Logout</a>
-            </form>
+            <button class="text-white bg-green-400 hover:bg-green-500 px-4 py-2 rounded-md"> 
+              <a style="text-decoration: none; color: inherit;" href="{{ route('profile.edit') }}">
+                {{ Auth::user()->name }}</a>
+            </button>
+            <button class="text-white bg-blue-400 hover:bg-blue-500 px-4 py-2 rounded-md">
+              <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <a style="text-decoration: none; color: inherit;"
+                href="{{ route('logout') }}"  onclick="event.preventDefault();this.closest('form').submit();">Logout</a>
+              </form>
+            </button>
           @endif
         </div>
       </nav>

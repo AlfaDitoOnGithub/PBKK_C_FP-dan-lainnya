@@ -27,7 +27,7 @@ Route::get('/', function () {
 })->name('landing');
 
 Route::get('/categories', [FrontendCategoryController::class, 'index'])->name('categories.index');
-Route::get('/categories/{category}', [FrontendCategoryController::class, 'index'])->name('categories.show');
+Route::get('/categories/{category}', [FrontendCategoryController::class, 'show'])->name('categories.show');
 Route::get('/menus', [FrontendMenuController::class, 'index'])->name('menus.index');
 Route::get('/reservation/step-one', [FrontendReservationController::class, 'stepOne'])->name('reservations.step.one');
 Route::post('/reservation/step-one', [FrontendReservationController::class, 'storeStepOne'])->name('reservations.store.step.one');
