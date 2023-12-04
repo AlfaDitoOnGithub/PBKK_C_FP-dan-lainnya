@@ -24,4 +24,6 @@ class TableFactory extends Factory
             'location' => Arr::random(['outdoor', 'indoor'])
         ];
     }
+
 }
+

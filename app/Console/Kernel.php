@@ -2,6 +2,8 @@
 
 namespace App\Console;
 
+use App\Jobs\fetchSpecialsMenu;
+
 use App\Jobs\DeleteOldReservation;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -14,7 +16,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->job(new DeleteOldReservation)->everyDay();
+
+        $schedule->job(new DeleteOldReservation)->daily();
+        $schedule->job(new fetchSpecialsMenu)->daily();
     }
 
     /**

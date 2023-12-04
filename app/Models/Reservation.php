@@ -9,7 +9,7 @@ class Reservation extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['first_name', 'last_name', 'tel_number', 'res_date', 'table_id', 'guest_number'];
+    protected $fillable = ['first_name', 'last_name', 'tel_number', 'res_date', 'table_id', 'guest_number', 'user_id'];
 
     protected $casts = [
         'res_date' => 'datetime'
@@ -18,5 +18,10 @@ class Reservation extends Model
     public function table()
     {
         return $this->belongsTo(Table::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

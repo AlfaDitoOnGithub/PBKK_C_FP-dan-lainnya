@@ -15,4 +15,6 @@ class MenuSeeder extends Seeder
     {
         Menu::factory(8)->create();
     }
+
 }
+

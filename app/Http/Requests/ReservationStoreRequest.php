@@ -27,6 +27,7 @@ class ReservationStoreRequest extends FormRequest
             'first_name' => ['required'],
             'last_name' => ['required'],
             'tel_number' => ['required', 'numeric'],
+            'user_id' => ['required'],
             'res_date' => ['required', 'date', new DateBetween, new TimeBetween],
             'table_id' => ['required'],
             'guest_number' => ['required', 'numeric'],

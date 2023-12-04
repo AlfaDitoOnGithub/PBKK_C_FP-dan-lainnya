@@ -20,7 +20,7 @@
         <div class="flex items-center justify-between">
           <a class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 md:text-2xl hover:text-green-400"
             href="#">
-            TailFood
+            Dito & Bar
           </a>
           <!-- Mobile menu button -->
           <div @click="isOpen = !isOpen" class="flex md:hidden">
@@ -40,28 +40,42 @@
           class="flex-col mt-8 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0">
           <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
           href="{{ route('landing') }}">Home</a>
+
           <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
-            href="#">Our Menu</a>
+            href="{{ route('categories.index') }}">Categories</a>
           <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
-            href="#">Make Reservations</a>
+            href="{{ route('menus.index') }}">Our Menu</a>
+          @if (Auth::user())
+            <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
+            href="{{ route('reservations.step.one') }}">Make Reservations</a>
+          @endif
           @if (!Auth::user())
-            <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
-              href="{{ route('login') }}">Login</a>
-            <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
-              href="{{ route('register') }}">Register</a>
+          <button class="text-white bg-green-400 hover:bg-green-500 px-4 py-2 rounded-md">
+            <a href="{{ route('login') }}" style="text-decoration: none; color: inherit;">Login</a>
+          </button>
+          <button class="text-white bg-blue-400 hover:bg-blue-500 px-4 py-2 rounded-md">
+          <a href="{{ route('register') }}" style="text-decoration: none; color: inherit;">Register</a>
+          </button>
+
+
           @else
             @if (Auth::user()->is_admin)
               <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
               href="{{ route('admin.index') }}">Admin View</a>
             @endif
-            <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
-            href="{{ route('profile.edit') }}">{{ Auth::user()->name }}</a>
-            <form method="POST" action="{{ route('logout') }}">
-              @csrf
-              
-              <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
-              href="{{ route('logout') }}"  onclick="event.preventDefault();this.closest('form').submit();">Logout</a>
-            </form>
+
+            <button class="text-white bg-green-400 hover:bg-green-500 px-4 py-2 rounded-md"> 
+              <a style="text-decoration: none; color: inherit;" href="{{ route('profile.edit') }}">
+                {{ Auth::user()->name }}</a>
+            </button>
+            <button class="text-white bg-blue-400 hover:bg-blue-500 px-4 py-2 rounded-md">
+              <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <a style="text-decoration: none; color: inherit;"
+                href="{{ route('logout') }}"  onclick="event.preventDefault();this.closest('form').submit();">Logout</a>
+              </form>
+            </button>
+
           @endif
         </div>
       </nav>
