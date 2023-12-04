@@ -6,17 +6,23 @@
         class="font-mono text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 md:text-center sm:leading-none lg:text-5xl">
         <span class="inline md:block">Welcome To Dito & Bar</span>
       </h1>
-      <div class="mx-auto mt-2 text-green-50 md:text-center lg:text-lg text-black">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta voluptatem ab necessitatibus illo praesentium
-        culpa excepturi quae commodi quaerat,
-      </div>
+      @if (Auth::user())
+        <div class="flex flex-col items-center mt-12 text-center">
+          <span class="relative inline-flex w-full md:w-auto">
+            <a href="{{route('reservations.step.one') }}" type="button"
+              class="inline-flex items-center justify-center px-6 py-2 text-base font-bold leading-6 text-white bg-green-600 rounded-full lg:w-full md:w-auto hover:bg-green-500 focus:outline-none">
+              Make your Reservation!
+            </a>
+        </div>
+      @else
       <div class="flex flex-col items-center mt-12 text-center">
         <span class="relative inline-flex w-full md:w-auto">
-          <a href="{{route('reservations.step.one') }}" type="button"
+          <a href="{{ route('login') }}" type="button"
             class="inline-flex items-center justify-center px-6 py-2 text-base font-bold leading-6 text-white bg-green-600 rounded-full lg:w-full md:w-auto hover:bg-green-500 focus:outline-none">
-            Make your Reservation!
+            Login to make a Reservation!
           </a>
       </div>
+      @endif
     </div>
     <!-- End Main Hero Content -->
     <section class="px-2 py-32 bg-white md:px-0">
@@ -32,12 +38,11 @@
               <h2 class="text-4xl text-green-600">Welcome</h2>
               <!-- </h1> -->
               <p class="mx-auto text-base text-gray-500 sm:max-w-md lg:text-xl md:max-w-3xl">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus nemo incidunt praesentium, ipsum
-                culpa minus eveniet, id nesciunt excepturi sit voluptate repudiandae. Explicabo, incidunt quia.
-                Repellendus mollitia quaerat est voluptas!
+                Welcome to Dito & Bar, where culinary excellence meets a welcoming atmosphere. Established in 2023, we pride ourselves on crafting memorable dining experiences. Our chefs skillfully blend fresh, premium ingredients to create a menu that embraces both tradition and innovation. 
               </p>
+              <p class="mx-auto text-base text-gray-500 sm:max-w-md lg:text-xl md:max-w-3xl"> Whether you're here for a cozy dinner or a lively celebration, our commitment to quality and warm hospitality ensures a delightful visit every time. Join us at Dito & Bar and discover a taste of our culinary passion, one that will surely leave an impression on your mind.</p>
               <div class="relative flex">
-                <a href="#_"
+                <a href="#aboutus"
                   class="flex items-center w-full px-6 py-3 mb-3 text-lg text-white bg-green-600 rounded-md sm:mb-0 hover:bg-green-700 sm:w-auto">
                   Read More
                   <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-1" viewBox="0 0 24 24" fill="none"
@@ -82,7 +87,6 @@
                 <p class="leading-normal text-gray-700">{{ $menu->description }}</p>
               </div>
               <div class="flex items-center justify-between p-4">
-                <button class="px-4 py-2 bg-green-600 text-green-50">Order Now</button>
                 <span class="text-xl text-green-600">Rp {{ $menu->price }}</span>
               </div>
             </div>
@@ -92,11 +96,11 @@
       </div>
     </section>
 
-    <section class="pt-4 pb-12 bg-gray-800">
+    <section class="pt-4 pb-12 bg-gray-800" id="aboutus">
       <div class="my-16 text-center">
         <h2 class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
-          Testimonial </h2>
-        <p class="text-xl text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. soluta sapient</p>
+          Why Choose Us? </h2>
+        <p class="text-xl text-white">Since its inception, Dito & Bar has remained devoted to its founding principles, of:</p>
       </div>
       <div class="grid gap-2 lg:grid-cols-3">
         <div class="max-w-md p-4 bg-white rounded-lg shadow-lg">
@@ -105,13 +109,8 @@
               src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80">
           </div>
           <div>
-            <h2 class="text-3xl font-semibold text-gray-800">Food</h2>
-            <p class="mt-2 text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dolores deserunt
-              ea doloremque natus error, rerum quas odio quaerat nam ex commodi hic, suscipit in a veritatis pariatur
-              minus consequuntur!</p>
-          </div>
-          <div class="flex justify-end mt-4">
-            <a href="#" class="text-xl font-medium text-green-500">John Doe</a>
+            <h2 class="text-3xl font-semibold text-gray-800">Culinary Excellence</h2>
+            <p class="mt-2 text-gray-600">At Dito & Bar, our commitment to culinary excellence is unwavering. Our chefs meticulously source the finest, freshest ingredients to create a menu that fuses innovation with tradition. Each dish is a masterpiece, a testament to our dedication to providing an exceptional dining experience.</p>
           </div>
         </div>
         <div class="max-w-md p-4 bg-white rounded-lg shadow-lg">
@@ -120,13 +119,8 @@
               src="https://cdn.pixabay.com/photo/2018/01/04/21/15/young-3061652__340.jpg">
           </div>
           <div>
-            <h2 class="text-3xl font-semibold text-gray-800">Food</h2>
-            <p class="mt-2 text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dolores deserunt
-              ea doloremque natus error, rerum quas odio quaerat nam ex commodi hic, suscipit in a veritatis pariatur
-              minus consequuntur!</p>
-          </div>
-          <div class="flex justify-end mt-4">
-            <a href="#" class="text-xl font-medium text-green-500">John Doe</a>
+            <h2 class="text-3xl font-semibold text-gray-800">Warm Hospitality</h2>
+            <p class="mt-2 text-gray-600">Established in 2023, Dito & Bar is not just a restaurant; it's a welcoming haven. Our staff embodies the spirit of hospitality, ensuring every guest feels at home. From the moment you step through our doors, you'll experience genuine warmth and personalized service that sets us apart.</p>
           </div>
         </div>
         <div class="max-w-md p-4 bg-white rounded-lg shadow-lg">
@@ -135,13 +129,8 @@
               src="https://cdn.pixabay.com/photo/2018/01/18/17/48/purchase-3090818__340.jpg">
           </div>
           <div>
-            <h2 class="text-3xl font-semibold text-gray-800">Food</h2>
-            <p class="mt-2 text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dolores deserunt
-              ea doloremque natus error, rerum quas odio quaerat nam ex commodi hic, suscipit in a veritatis pariatur
-              minus consequuntur!</p>
-          </div>
-          <div class="flex justify-end mt-4">
-            <a href="#" class="text-xl font-medium text-green-500">John Doe</a>
+            <h2 class="text-3xl font-semibold text-gray-800">Timeless Atmosphere</h2>
+            <p class="mt-2 text-gray-600"> Step into a timeless atmosphere at Dito & Bar, where contemporary design meets classic charm. Whether you're seeking an intimate dinner or a lively celebration, our inviting ambiance provides the perfect backdrop. The combination of tasteful decor, ambient lighting, and thoughtful details creates an unforgettable setting for your dining pleasure.</p>
           </div>
         </div>
       </div>

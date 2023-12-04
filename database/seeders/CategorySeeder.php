@@ -13,12 +13,6 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        Category::create([
-            'name' => 'Specials', 
-            'image' => 'public/categories/categories-dish-template.png', 
-            'description' => 'This is the specials category'
-        ]);
-
         Category::factory(3)->create();
     }
 }

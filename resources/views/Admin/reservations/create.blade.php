@@ -16,6 +16,7 @@
                     <form method="POST" action="{{ route('admin.reservations.store') }}">
                         @csrf
                         <div class="sm:col-span-6">
+                            <input type="hidden" id="user_id" name="user_id" value="{{ Auth::user()->id }}">
                             <label for="first_name" class="block text-sm font-medium text-gray-700"> First Name </label>
                             <div class="mt-1">
                                 <input type="text" id="first_name" name="first_name"

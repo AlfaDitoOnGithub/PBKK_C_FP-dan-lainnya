@@ -27,8 +27,10 @@ class ReservationController extends Controller
             'first_name' => ['required'],
             'last_name' => ['required'],
             'tel_number' => ['required', 'numeric'],
+            'user_id' => ['required'],
             'res_date' => ['required', 'date', new DateBetween, new TimeBetween],
         ]);
+        
         
         if(empty($request->session()->get('reservation'))){
             $reservation = new Reservation();
@@ -46,9 +48,13 @@ class ReservationController extends Controller
     {
         $reservation = $request->session()->get('reservation');
         $res_tables_ids = Reservation::orderBy('res_date')->get()->filter(function ($value) use ($reservation){
-            return $value->res_date->format('Y-m-d') == $reservation->res_date->format('Y-m-d');
+            return $value->res_date->format('Y-m-d H') == $reservation->res_date->format('Y-m-d H');
         })->pluck('table_id');
-        $tables = Table::where('status', TableStatus::Available)->get();
+
+        $Availtables = Table::where('status', TableStatus::Available)->get();
+        $tables = $Availtables->reject(function ($table) use ($res_tables_ids) {
+            return in_array($table->id, $res_tables_ids->toArray());
+        });
 
         return view('reservations.step-two', compact('reservation', 'tables'));
     }

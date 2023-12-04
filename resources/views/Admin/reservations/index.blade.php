@@ -19,7 +19,7 @@
                                 Id
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Name
+                                Name (Username)
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Telephone No.
@@ -28,7 +28,7 @@
                                 Reservation Date
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Table Id
+                                Table Name (Id)
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Guest Number
@@ -41,27 +41,27 @@
                     <tbody>
                         @foreach($reservations as $reservation)
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <td scope="row" class="px-2 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     {{ $reservation->id }}
                                 </td>
-                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $reservation->first_name }} {{ $reservation->last_name }}
+                                <td class="px-2 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ $reservation->first_name }} {{ $reservation->last_name }} ({{ $reservation->user->name }})
                                 </td>
-                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <td class="px-2 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     {{ $reservation->tel_number }}
                                 </td>
-                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <td class="px-2 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     {{ $reservation->res_date }}
                                 </td>
-                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $reservation->table->name }}
+                                <td class="px-2 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ $reservation->table->name }} ({{ $reservation->table->id }})
                                 </td>
-                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <td class="px-2 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     {{ $reservation->guest_number }}
                                 </td>
                                 <td class="row">
-                                    <a href="{{ route('admin.reservations.edit', $reservation->id) }}" class="px-4 py-3 bg-green-500 hover:bg-green-700 rounded-lg text-white mx-2 inline"> Edit </a>
-                                    || <form class="px-4 py-3 bg-red-500 hover:bg-red-700 rounded-lg text-white inline mx-2" method="POST"
+                                    <a href="{{ route('admin.reservations.edit', $reservation->id) }}" class="px-3 py-3 bg-green-500 hover:bg-green-700 rounded-lg text-white inline"> Edit </a>
+                                    <form class="px-3 py-3 bg-red-500 hover:bg-red-700 rounded-lg text-white inline " method="POST"
                                         action="{{ route('admin.reservations.destroy', $reservation->id) }}" onsubmit="return confirm('Are you sure?');">
                                         @csrf
                                         @method('DELETE')

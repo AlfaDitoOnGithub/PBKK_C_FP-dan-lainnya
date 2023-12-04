@@ -18,7 +18,7 @@ class MenuCategorySeeder extends Seeder
 
         foreach ($menus as $menuId) {
             DB::table('categories_menus')->insert([
-                'category_id' => rand(2, count($categories)),
+                'category_id' => rand(1, count($categories)),
                 'menu_id' => $menuId,
             ]);
         }
