@@ -23,4 +23,6 @@ class CategoryFactory extends Factory
             'image' => 'public/categories/'.Arr::random(['categories-dish-template.png', 'categories-drink-template.png'])
         ];
     }
+
 }
+

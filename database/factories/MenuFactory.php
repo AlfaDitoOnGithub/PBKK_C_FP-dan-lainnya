@@ -24,4 +24,6 @@ class MenuFactory extends Factory
             'price' => fake()->numberBetween(4500, 135000)
         ];
     }
+
 }
+

@@ -23,4 +23,6 @@ class MenuCategorySeeder extends Seeder
             ]);
         }
     }
+
 }
+

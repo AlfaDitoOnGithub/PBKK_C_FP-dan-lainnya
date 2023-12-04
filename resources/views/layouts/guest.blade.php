@@ -40,6 +40,7 @@
           class="flex-col mt-8 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0">
           <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
           href="{{ route('landing') }}">Home</a>
+
           <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
             href="{{ route('categories.index') }}">Categories</a>
           <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
@@ -56,11 +57,13 @@
           <a href="{{ route('register') }}" style="text-decoration: none; color: inherit;">Register</a>
           </button>
 
+
           @else
             @if (Auth::user()->is_admin)
               <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
               href="{{ route('admin.index') }}">Admin View</a>
             @endif
+
             <button class="text-white bg-green-400 hover:bg-green-500 px-4 py-2 rounded-md"> 
               <a style="text-decoration: none; color: inherit;" href="{{ route('profile.edit') }}">
                 {{ Auth::user()->name }}</a>
@@ -72,6 +75,7 @@
                 href="{{ route('logout') }}"  onclick="event.preventDefault();this.closest('form').submit();">Logout</a>
               </form>
             </button>
+
           @endif
         </div>
       </nav>

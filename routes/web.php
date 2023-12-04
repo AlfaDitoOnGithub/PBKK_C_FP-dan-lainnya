@@ -25,6 +25,7 @@ use App\Http\Controllers\Frontend\ReservationController as FrontendReservationCo
 */
 
 Route::get('/', function () {
+
     $highlightMenus = Cache::get('highlightMenus');
     // Check if data exists in the cache
     if ($highlightMenus !== null) {
@@ -44,6 +45,7 @@ Route::get('/reservation/step-one', [FrontendReservationController::class, 'step
 Route::post('/reservation/step-one', [FrontendReservationController::class, 'storeStepOne'])->name('reservations.store.step.one');
 Route::get('/reservation/step-two', [FrontendReservationController::class, 'stepTwo'])->name('reservations.step.two');
 Route::post('/reservation/step-two', [FrontendReservationController::class, 'storeStepTwo'])->name('reservations.store.step.two');
+
 
 
 

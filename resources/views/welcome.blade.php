@@ -1,3 +1,4 @@
+
 <x-guest-layout>
     <!-- Main Hero Content -->
     <div

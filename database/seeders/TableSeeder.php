@@ -15,4 +15,6 @@ class TableSeeder extends Seeder
     {
         Table::factory(5)->create();
     }
+
 }
+

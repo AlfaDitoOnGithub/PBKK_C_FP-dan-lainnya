@@ -33,4 +33,6 @@ class DeleteOldReservation implements ShouldQueue
             Reservation::where('res_date', '<', Carbon::now())->delete();
         });
     }
+
 }
+

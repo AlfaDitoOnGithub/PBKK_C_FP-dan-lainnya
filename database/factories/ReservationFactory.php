@@ -22,8 +22,10 @@ class ReservationFactory extends Factory
             'tel_number' => fake()->phoneNumber(),
             'res_date' => fake()->dateTimeBetween('-1 week', '+1 week'),
             'table_id' => fake()->numberBetween(1,5),
+
             'user_id' => fake()->numberBetween(1,10),
             'guest_number' => fake()->numberBetween(1,4),
         ];
     }
 }
+
