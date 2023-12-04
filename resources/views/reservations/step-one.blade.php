@@ -4,8 +4,7 @@
             <div class="flex-1 h-full max-w-4xl mx-auto bg-white rounded-lg shadow-xl">
               <div class="flex flex-col md:flex-row">
                 <div class="h-32 md:h-auto md:w-1/2">
-                    <img class="object-cover w-full h-full" src="..\resources\assets
-                    resources\assets\Logo.jpg" alt="Logo">
+                    <img class="object-cover w-full h-full" src="{{ Storage::url('public/assets/ditobarlogo.png') }}" alt="Logo">
                 </div>
         
                 <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">

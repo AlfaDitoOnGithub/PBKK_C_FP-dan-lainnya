@@ -1,14 +1,16 @@
 <?php
 
+use App\Models\Menu;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\MenuController;
-use App\Http\Controllers\Admin\ReservationController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\TableController;
-use App\Http\Controllers\Frontend\CategoryController as FrontendCategoryController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ReservationController;
 use App\Http\Controllers\Frontend\MenuController as FrontendMenuController;
+use App\Http\Controllers\Frontend\CategoryController as FrontendCategoryController;
 use App\Http\Controllers\Frontend\ReservationController as FrontendReservationController;
 
 /*
@@ -23,7 +25,16 @@ use App\Http\Controllers\Frontend\ReservationController as FrontendReservationCo
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $highlightMenus = Cache::get('highlightMenus');
+    // Check if data exists in the cache
+    if ($highlightMenus !== null) {
+        // Convert the cached data into a collection of Menu models
+        $highlightMenus = collect($highlightMenus);
+    } else {
+        // Handle the case when there's no data in the cache
+        $highlightMenus = collect();
+    }
+    return view('welcome', compact('highlightMenus'));
 })->name('landing');
 
 Route::get('/categories', [FrontendCategoryController::class, 'index'])->name('categories.index');
